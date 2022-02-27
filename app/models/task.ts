@@ -5,21 +5,21 @@ import { Task } from "@prisma/client";
 
 export function getBucketTasks(userId: string, slug: string) {
   return db.bucket.findMany({
-    where: { userId, slug },
+    where: { slug },
     orderBy: { updatedAt: "asc" },
   });
 }
 
 export function getUnassignedTasks(userId: string) {
   return db.task.findMany({
-    where: { userId, bucketId: null },
+    where: { bucketId: null },
     orderBy: { sortUpdatedAt: "asc" },
   });
 }
 
 export function getBacklog(userId: string) {
   return db.task.findMany({
-    where: { userId, date: null },
+    where: { date: null },
     include: {
       Bucket: { select: { name: true } },
     },
@@ -28,7 +28,7 @@ export function getBacklog(userId: string) {
 
 export function getDayTasks(userId: string, day: string) {
   return db.task.findMany({
-    where: { userId, date: day },
+    where: { date: day },
     include: {
       Bucket: { select: { name: true } },
     },
@@ -50,7 +50,7 @@ export async function getTotalCountsByDate(
       date: true,
     },
     where: {
-      userId: userId,
+
       date: {
         gt: formatParamDate(start),
         lt: formatParamDate(end),
@@ -88,7 +88,7 @@ export async function getCompletedCountsByDate(
       date: true,
     },
     where: {
-      userId: userId,
+
       complete: true,
       date: {
         gt: formatParamDate(start),

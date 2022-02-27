@@ -6,3 +6,10 @@ node_modules
 .env
 /prisma/*.db
 /app/tailwind.css
+
+Dockerfile
+start_with_migrations.sh
+
+.dockerignore
+
+public/favicon.png

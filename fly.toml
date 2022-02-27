@@ -1,24 +1,22 @@
-# fly.toml file generated for planner on 2021-12-14T08:49:39-07:00
+# fly.toml file generated for todoapp on 2022-02-27T15:08:15+01:00
 
-app = "planner"
+app = "todoapp"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
-[build]
-  builder = "heroku/buildpacks:20"
-
 [env]
+  DATABASE_URL = "file:/data/sqlite.db"
   PORT = "8080"
-  NODE_ENV="production"
-
-[deploy]
-  release_command = "npx prisma migrate deploy"
 
 [experimental]
-  allowed_public_ports = []
-  auto_rollback = true
+  cmd = "start_with_migrations.sh"
+  entrypoint = "sh"
+
+[[mounts]]
+  destination = "/data"
+  source = "data"
 
 [[services]]
   http_checks = []

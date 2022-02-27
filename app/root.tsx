@@ -23,7 +23,7 @@ export function links() {
 }
 
 export function meta() {
-  return { title: "Ryan's Planner" };
+  return { title: "Zoe's Planner" };
 }
 
 export let loader: LoaderFunction = async ({ request }) => {
@@ -38,13 +38,13 @@ export default function Root() {
   let changingPages =
     transition.location &&
     transition.location.pathname.split("/")[1] !==
-      location.pathname.split("/")[1];
+    location.pathname.split("/")[1];
 
   return (
     <html lang="en" className="overflow-hidden w-full">
       <head>
         <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon-16x16.png" type="image/png" />
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,viewport-fit=cover"

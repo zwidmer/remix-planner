@@ -325,7 +325,7 @@ async function sendMagicLinkEmail(
 
   let html = renderToStaticMarkup(
     <>
-      <p style={{ fontWeight: "bold" }}>Log in to Ryan's Planner.</p>
+      <p style={{ fontWeight: "bold" }}>Log in to Zoe's Planner.</p>
       <p>
         (This email uses React to render the email on the server, that's cool)
       </p>
