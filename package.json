@@ -5,7 +5,7 @@
   "license": "",
   "scripts": {
     "postinstall": "remix setup",
-    "dev": "concurrently \"npm run dev:css\" \"node -r dotenv/config node_modules/.bin/remix dev\"",
+    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "start": "remix-serve build",
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -o ./app/tailwind.css",

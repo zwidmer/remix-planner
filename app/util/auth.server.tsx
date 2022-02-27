@@ -19,11 +19,11 @@ if (typeof process.env.SESSION_SECRET !== "string")
 if (typeof process.env.MAGIC_LINK_SALT !== "string")
   throw new Error("Missing `process.env.MAGIC_LINK_SALT`");
 
-if (typeof process.env.MAILGUN_KEY !== "string")
-  throw new Error("Missing process.env.MAILGUN_KEY");
+// if (typeof process.env.MAILGUN_KEY !== "string")
+//   throw new Error("Missing process.env.MAILGUN_KEY");
 
-if (typeof process.env.MAILGUN_DOMAIN !== "string")
-  throw new Error("Missing `process.env.MAILGUN_DOMAIN`");
+// if (typeof process.env.MAILGUN_DOMAIN !== "string")
+//   throw new Error("Missing `process.env.MAILGUN_DOMAIN`");
 
 /*******************************************************************************
  * 1. It all starts with a "user session". A session is a fancy type of cookie
@@ -311,10 +311,10 @@ function validateMagicLink(link: string) {
 /*******************************************************************************
  * Email handled by mailgun
  */
-let mailgun = createMailgun({
-  apiKey: process.env.MAILGUN_KEY,
-  domain: process.env.MAILGUN_DOMAIN,
-});
+// let mailgun = createMailgun({
+//   apiKey: process.env.MAILGUN_KEY,
+//   domain: process.env.MAILGUN_DOMAIN,
+// });
 
 async function sendMagicLinkEmail(
   email: string,
@@ -336,12 +336,15 @@ async function sendMagicLinkEmail(
   );
 
   if (process.env.NODE_ENV === "production") {
-    return mailgun.messages().send({
-      from: "Ryan's Planner <rpflorence@gmail.com>",
-      to: email,
-      subject: "Login to Planner!",
-      html,
-    });
+    //   return mailgun.messages().send({
+    //     from: "Ryan's Planner <rpflorence@gmail.com>",
+    //     to: email,
+    //     subject: "Login to Planner!",
+    //     html,
+
+    //   }
+    // );
+    console.log(link);
   } else {
     console.log(link);
   }
